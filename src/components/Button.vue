@@ -1,6 +1,8 @@
 <template>
   <div class="button">
-    <button class="button__content" type="button" v-on:click="clicked">Crear usuario</button>
+    <button class="button__content" type="button" v-on:click="clicked">
+      Crear usuario
+    </button>
   </div>
 </template>
 
@@ -8,11 +10,10 @@
 export default {
   name: "Button",
   methods: {
-      clicked() {
-          console.log("siu")
-          this.$emit("clicked");
-      }
-  }
+    clicked() {
+      this.$emit("clicked");
+    },
+  },
 };
 </script>
 
@@ -28,9 +29,7 @@ export default {
 
     &:hover {
       box-shadow: 0px 0px 22px -5px $blue-primary;
+    }
   }
-  }
-
-  
 }
 </style>

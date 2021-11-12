@@ -126,12 +126,7 @@ export default {
     getPhoneErrors() {
       let message = "";
       const firstCharacter = this.value.charAt(0).toString();
-      console.log(firstCharacter);
-      console.log(
-        firstCharacter !== "6" &&
-          firstCharacter !== "7" &&
-          firstCharacter !== "9"
-      );
+  
       if (!Number(this.value)) {
         message = "Debe ser un número";
       } else if (
