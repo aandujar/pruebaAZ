@@ -13,18 +13,18 @@ const routes = [
   {
     path: '/wrapper',
     name: 'Wrapper',
-    redirect: { name: 'Characters' },
+    redirect: { name: 'Users' },
     component: () => import('@/views/Wrapper.vue'),
     children: [
       {
-        path: 'characters',
-        name: 'Characters',
-        component: () => import('@/views/Characters.vue')
+        path: 'users',
+        name: 'Users',
+        component: () => import('@/views/Users.vue')
       },
       {
-        path: 'character',
-        name: 'Character',
-        component: () => import('@/views/Character.vue')
+        path: 'user',
+        name: 'User',
+        component: () => import('@/views/User.vue')
       },
     ]
   }

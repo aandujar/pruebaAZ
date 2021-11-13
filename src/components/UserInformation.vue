@@ -1,48 +1,24 @@
 <template>
   <div class="user-information">
     <h3>Datos del usuario</h3>
-    <div class="user-information__block">
-      <Icon focused type="name" />
-      <div v-if="isUserLogged" class="user-information__block__text">
-        {{ user.name }}
-      </div>
+    <div v-if="isUserLogged">
+      <UserInfoIcon :text="user.name" icon="name" />
+      <UserInfoIcon :text="user.email" icon="email" />
+      <UserInfoIcon :text="user.phoneNumber" icon="phone" />
+      <UserInfoIcon :text="user.postalCode" icon="postalCode" />
     </div>
-    <div class="user-information__block">
-      <Icon focused type="email" />
-      <div v-if="isUserLogged" class="user-information__block__text">
-        {{ user.email }}
-      </div>
-    </div>
-    <div class="user-information__block">
-      <Icon focused type="phone" />
-      <div v-if="isUserLogged" class="user-information__block__text">
-        {{ user.phoneNumber }}
-      </div>
-    </div>
-    <div class="user-information__block">
-      <Icon focused type="postalCode" />
-      <div v-if="isUserLogged" class="user-information__block__text">
-        {{ user.postalCode }}
-      </div>
-    </div>
-    <div
-      class="user-information__block user-information__block--logout"
-      v-on:click="logout"
-    >
-      <Icon focused type="logout" />
-      <div class="user-information__block__text">Cerrar sesión</div>
-    </div>
+    <UserInfoIcon text="Cerrar sesión" icon="logout" v-on:click="logout" />
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import { mapGetters } from "vuex";
-import Icon from "@/components/Icon";
+import UserInfoIcon from "@/components/UserInfoIcon";
 
 export default {
   name: "UserInformation",
-  components: { Icon },
+  components: {  UserInfoIcon },
   computed: { ...mapState(["user"]), ...mapGetters(["isUserLogged"]) },
   methods: {
     logout() {
@@ -66,22 +42,8 @@ export default {
     margin-top: 20px;
   }
 
-  &__block {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    &--logout {
-      cursor: pointer;
-    }
-
-    &__text {
-      padding-left: 10px;
-      word-break: break-all;
-    }
+  &--logout {
+    cursor: pointer;
   }
 }
 </style>

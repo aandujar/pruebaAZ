@@ -55,13 +55,16 @@ export default {
   data: function () {
     return {
       user: {
-        name: "",
-        email: "",
-        phoneNumber: "",
-        postalCode: "",
+        name: "aaa",
+        email: "a@kdnv.com",
+        phoneNumber: "634207214",
+        postalCode: "46940",
       },
       validateValue: false,
     };
+  },
+  mounted() {
+    this.createUser();
   },
   methods: {
     setValue(data, property) {
@@ -99,7 +102,7 @@ export default {
 
   &__box {
     padding: 20px;
-    background-color: white;
+    background-color: $white;
     min-height: 580px;
     width: 40%;
     box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
@@ -108,7 +111,7 @@ export default {
    @media (max-width: 1600px) {
       &__box {
         padding: 20px;
-        background-color: white;
+        background-color: $white;
         height: 500px;
         width: 50%;
         box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
@@ -118,7 +121,7 @@ export default {
      @media (max-width: 1260px) {
       &__box {
         padding: 20px;
-        background-color: white;
+        background-color: $white;
         height: 500px;
         width: 60%;
         box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
@@ -128,7 +131,7 @@ export default {
     @media (max-width: 1000px) {
       &__box {
         padding: 20px;
-        background-color: white;
+        background-color: $white;
         height: 500px;
         width: 70%;
         box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);

@@ -6,7 +6,15 @@
 
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiAccount, mdiPhoneOutline, mdiMapMarker, mdiEmail, mdiLogout } from "@mdi/js";
+import {
+  mdiAccount,
+  mdiPhoneOutline,
+  mdiMapMarker,
+  mdiEmail,
+  mdiLogout,
+  mdiChevronLeft,
+  mdiChevronRight,
+} from "@mdi/js";
 
 export default {
   name: "Icon",
@@ -24,25 +32,30 @@ export default {
     getType() {
       let icon = "";
 
-      switch(this.type) {
-          case 'name':
-              icon = mdiAccount;
-              break;
-          case 'phone':
-              icon = mdiPhoneOutline;
-              break;
-            case 'postalCode': 
-                icon = mdiMapMarker;
-                break;
-            case 'email': 
-                icon = mdiEmail;
-                break;
-            case 'logout': 
-                icon = mdiLogout;
-                break;
+      switch (this.type) {
+        case "name":
+          icon = mdiAccount;
+          break;
+        case "phone":
+          icon = mdiPhoneOutline;
+          break;
+        case "postalCode":
+          icon = mdiMapMarker;
+          break;
+        case "email":
+          icon = mdiEmail;
+          break;
+        case "logout":
+          icon = mdiLogout;
+          break;
+        case "arrowLeft":
+          icon = mdiChevronLeft;
+          break;
+        case "arrowRight":
+          icon = mdiChevronRight;
+          break;
         default:
-            break;
-
+          break;
       }
 
       return icon;
