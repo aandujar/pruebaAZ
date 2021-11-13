@@ -6,7 +6,7 @@
 
 <script>
 import SvgIcon from "@jamescoyle/vue-icon";
-import { mdiAccount, mdiPhoneOutline, mdiMapMarker, mdiEmail } from "@mdi/js";
+import { mdiAccount, mdiPhoneOutline, mdiMapMarker, mdiEmail, mdiLogout } from "@mdi/js";
 
 export default {
   name: "Icon",
@@ -36,6 +36,9 @@ export default {
                 break;
             case 'email': 
                 icon = mdiEmail;
+                break;
+            case 'logout': 
+                icon = mdiLogout;
                 break;
         default:
             break;

@@ -81,7 +81,7 @@ export default {
         correctPhoneNumber &&
         correctPostalCode
       ) {
-         this.$store.dispatch("setUser", this.user);
+         this.$store.dispatch("setUser", this.user).then(() => this.$router.push("/wrapper"))
       }
     },
   },
@@ -100,7 +100,7 @@ export default {
   &__box {
     padding: 20px;
     background-color: white;
-    height: 500px;
+    min-height: 580px;
     width: 40%;
     box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
   }

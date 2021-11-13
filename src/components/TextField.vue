@@ -1,14 +1,16 @@
 <template>
   <div class="textfield">
-    <transition name="fade">
-      <label
-        v-show="showLabel"
-        :id="getLabelId"
-        :for="label"
-        class="textfield__label"
-        >{{ label }}</label
-      >
-    </transition>
+    <div class="textfield__label">
+      <transition name="fade">
+        <label
+          v-show="showLabel"
+          :id="getLabelId"
+          :for="label"
+          class="textfield__label__text"
+          >{{ label }}</label
+        >
+      </transition>
+    </div>
     <div class="textfield__input">
       <Icon :focused="focusIcon" :type="icon" />
       <input
@@ -21,11 +23,13 @@
         v-on:input="sendValue"
       />
     </div>
-    <transition name="fade">
-      <p class="textfield__error" v-show="getErrorMessage.length > 0">
-        {{ getErrorMessage }}
-      </p>
-    </transition>
+    <div class="textfield__error">
+      <transition name="fade">
+        <p class="textfield__error__text" v-show="getErrorMessage.length > 0">
+          {{ getErrorMessage }}
+        </p>
+      </transition>
+    </div>
   </div>
 </template>
 
@@ -91,20 +95,20 @@ export default {
     focusLabel() {
       document
         .getElementById(this.getLabelId)
-        .classList.remove("textfield__label--not-focused");
+        .classList.remove("textfield__label__text--not-focused");
       document
         .getElementById(this.getLabelId)
-        .classList.add("textfield__label--focused");
+        .classList.add("textfield__label__text--focused");
       this.focused = true;
       this.focusIcon = true;
     },
     removeFocusLabel() {
       document
         .getElementById(this.getLabelId)
-        .classList.remove("textfield__label--focused");
+        .classList.remove("textfield__label__text--focused");
       document
         .getElementById(this.getLabelId)
-        .classList.add("textfield__label--not-focused");
+        .classList.add("textfield__label__text--not-focused");
       this.focusIcon = false;
     },
     sendValue() {
@@ -126,7 +130,7 @@ export default {
     getPhoneErrors() {
       let message = "";
       const firstCharacter = this.value.charAt(0).toString();
-  
+
       if (!Number(this.value)) {
         message = "Debe ser un número";
       } else if (
@@ -163,24 +167,29 @@ export default {
   text-align: center;
   margin-top: 40px;
   margin-bottom: 40px;
-  height: 50px;
+  height: 70px;
 
   &__label {
-    width: 40%;
+    height: 20px;
+    width: 50%;
 
-    &--not-focused {
-      color: $black;
-    }
+    &__text {
+      width: 100%;
+      &--not-focused {
+        color: $black;
+      }
 
-    &--focused {
-      color: $blue-primary;
+      &--focused {
+        color: $blue-primary;
+      }
     }
   }
 
   &__input {
     display: flex;
     flex-direction: row;
-    width: 40%;
+    height: 28px;
+    width: 50%;
 
     &__field {
       border-top: none;
@@ -198,9 +207,13 @@ export default {
   }
 
   &__error {
-    color: $red-error;
-    margin: 0;
-    padding-top: 5px;
+    height: 20px;
+
+    &__text {
+      color: $red-error;
+      margin: 0;
+      padding-top: 5px;
+    }
   }
 
   .fade-enter-active,
