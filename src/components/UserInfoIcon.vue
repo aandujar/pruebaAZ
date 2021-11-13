@@ -1,0 +1,37 @@
+<template>
+  <div class="user-info-icon">
+    <Icon focused :type="icon" />
+    <div class="user-info-icon__text">
+      {{ text }}
+    </div>
+  </div>
+</template>
+
+<script>
+import Icon from "@/components/Icon";
+
+export default {
+  name: "UserInfoIcon",
+  components: { Icon },
+  props: {
+    text: { type: String, required: true },
+    icon: { type: String, required: true },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.user-info-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  &__text {
+    padding-left: 10px;
+    word-break: break-all;
+  }
+}
+</style>
