@@ -19,7 +19,8 @@ import {
   mdiCakeVariant,
   mdiGenderMale,
   mdiGenderFemale,
-  mdiArrowLeftThick
+  mdiArrowLeftThick,
+  mdiInformationOutline
 } from "@mdi/js";
 
 export default {
@@ -77,6 +78,9 @@ export default {
           break;
         case "back":
           icon = mdiArrowLeftThick;
+          break;
+        case "info":
+          icon = mdiInformationOutline;
           break;
         default:
           break;

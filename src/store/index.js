@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     user: null,
     users: [],
-    userSelected: null
+    userSelected: null,
+    loading: false
   },
   getters: {
     isUserLogged: state => {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     setUserSelected (state, user) {
       state.userSelected = user;
     },
+    setLoading (state, loading) {
+      state.loading = loading;
+    },
   },
   actions: {
     setUser ({ commit }, user) {
@@ -35,6 +39,7 @@ export default new Vuex.Store({
     },
     getUsers ({ commit }, params) {
       return new Promise((resolve, reject) => {
+        commit('setLoading', true);
         service.getUsers(params)
         .then(function (response) {
           commit('setUsers', response.data.results);
@@ -44,6 +49,7 @@ export default new Vuex.Store({
           commit('setUsers', []);
           reject(error)
       })
+      .finally(() => commit('setLoading', false))
       });
     }
   }

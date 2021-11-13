@@ -80,6 +80,7 @@ export default {
       min-height: 580px;
       width: 60%;
       box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
+      margin-bottom: 30px;
 
       &__img {
         align-self: flex-start;

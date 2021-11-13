@@ -134,6 +134,8 @@ export default {
     }
 
     &__content {
+      padding-right: 30px;
+
       &--hided {
         display: block;
       }
@@ -183,6 +185,8 @@ export default {
     }
 
     &__content {
+      padding-right: 30px;
+      
       @keyframes showIcons {
         0% {
           opacity: 0;
