@@ -55,16 +55,13 @@ export default {
   data: function () {
     return {
       user: {
-        name: "aaa",
-        email: "a@kdnv.com",
-        phoneNumber: "634207214",
-        postalCode: "46940",
+        name: "",
+        email: "",
+        phoneNumber: "",
+        postalCode: "",
       },
       validateValue: false,
     };
-  },
-  mounted() {
-    this.createUser();
   },
   methods: {
     setValue(data, property) {
@@ -72,20 +69,24 @@ export default {
     },
     createUser() {
       this.validateValue = true;
-      const correctName = this.$refs.name.getErrorMessage.length === 0;
-      const correctEmail = this.$refs.email.getErrorMessage.length === 0;
-      const correctPhoneNumber =
-        this.$refs.phone.getErrorMessage.length === 0;
-      const correctPostalCode =
-        this.$refs.postalCode.getErrorMessage.length === 0;
-      if (
-        correctName &&
-        correctEmail &&
-        correctPhoneNumber &&
-        correctPostalCode
-      ) {
-         this.$store.dispatch("setUser", this.user).then(() => this.$router.push("/wrapper"))
-      }
+      setTimeout(() => {
+        const correctName = this.$refs.name.getErrorMessage.length === 0;
+        const correctEmail = this.$refs.email.getErrorMessage.length === 0;
+        const correctPhoneNumber =
+          this.$refs.phone.getErrorMessage.length === 0;
+        const correctPostalCode =
+          this.$refs.postalCode.getErrorMessage.length === 0;
+        if (
+          correctName &&
+          correctEmail &&
+          correctPhoneNumber &&
+          correctPostalCode
+        ) {
+          this.$store
+            .dispatch("setUser", this.user)
+            .then(() => this.$router.push("/wrapper"));
+        }
+      }, 300);
     },
   },
 };
@@ -108,37 +109,35 @@ export default {
     box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
   }
 
-   @media (max-width: 1600px) {
-      &__box {
-        padding: 20px;
-        background-color: $white;
-        height: 500px;
-        width: 50%;
-        box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
-      }
+  @media (max-width: 1600px) {
+    &__box {
+      padding: 20px;
+      background-color: $white;
+      height: 500px;
+      width: 50%;
+      box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
     }
+  }
 
-     @media (max-width: 1260px) {
-      &__box {
-        padding: 20px;
-        background-color: $white;
-        height: 500px;
-        width: 60%;
-        box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
-      }
+  @media (max-width: 1260px) {
+    &__box {
+      padding: 20px;
+      background-color: $white;
+      height: 500px;
+      width: 60%;
+      box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
     }
+  }
 
-    @media (max-width: 1000px) {
-      &__box {
-        padding: 20px;
-        background-color: $white;
-        height: 500px;
-        width: 70%;
-        box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
-      }
+  @media (max-width: 1000px) {
+    &__box {
+      padding: 20px;
+      background-color: $white;
+      height: 500px;
+      width: 70%;
+      box-shadow: 0px 0px 15px -1px rgba(0, 0, 0, 76%);
     }
-
-   
+  }
 
   &__box__title {
     font-size: 20px;

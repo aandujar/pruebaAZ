@@ -25,12 +25,28 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
     width: 300px;
   }
 
   &__content {
     padding-left: 350px;
+  }
+
+  @media (max-width: 900px) {
+    &__user-information {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    &__content {
+      height: 100%;
+      width: 100vw;
+      padding-left: 0;
+    }
   }
 }
 </style>

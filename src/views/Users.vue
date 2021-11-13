@@ -57,9 +57,7 @@ export default {
       })
       .then(() => (this.position = this.users.length));
   },
-  mounted() {
-    console.log(this.users.length);
-  },
+
   methods: {
     emptyClasses(currentImg) {
       if (currentImg.classList.contains("users__container__user--hide-left")) {
@@ -226,6 +224,23 @@ export default {
         animation-name: showRight;
         animation-duration: 500ms;
         animation-fill-mode: forwards;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    &__container {
+      height: 300px;
+      width: 150px;
+
+      &__user {
+        background-color: white;
+        border: 1px solid black;
+        height: 300px;
+        width: 150px;
+        z-index: 10;
+        position: relative;
+        cursor: pointer;
       }
     }
   }

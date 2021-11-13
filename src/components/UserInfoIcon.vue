@@ -1,5 +1,9 @@
 <template>
-  <div class="user-info-icon">
+  <div
+    class="user-info-icon"
+    :class="{ 'user-info-icon--pointer': pointer }"
+    v-on:click="clicked"
+  >
     <Icon focused :type="icon" />
     <div class="user-info-icon__text">
       {{ text }}
@@ -16,6 +20,12 @@ export default {
   props: {
     text: { type: String, required: true },
     icon: { type: String, required: true },
+    pointer: { type: Boolean, required: false, default: false },
+  },
+  methods: {
+    clicked() {
+      this.$emit("clicked");
+    },
   },
 };
 </script>
@@ -28,6 +38,10 @@ export default {
   width: 100%;
   margin-top: 20px;
   margin-bottom: 20px;
+
+  &--pointer {
+    cursor: pointer;
+  }
 
   &__text {
     padding-left: 10px;

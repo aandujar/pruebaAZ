@@ -38,7 +38,6 @@ export default new Vuex.Store({
         service.getUsers(params)
         .then(function (response) {
           commit('setUsers', response.data.results);
-          console
           resolve(response.data.results)
       })
       .catch(function (error) {

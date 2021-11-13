@@ -14,6 +14,12 @@ import {
   mdiLogout,
   mdiChevronLeft,
   mdiChevronRight,
+  mdiChevronUp,
+  mdiChevronDown,
+  mdiCakeVariant,
+  mdiGenderMale,
+  mdiGenderFemale,
+  mdiArrowLeftThick
 } from "@mdi/js";
 
 export default {
@@ -48,11 +54,29 @@ export default {
         case "logout":
           icon = mdiLogout;
           break;
+        case "arrowUp":
+          icon = mdiChevronUp;
+          break;
+        case "arrowDown":
+          icon = mdiChevronDown;
+          break;
         case "arrowLeft":
           icon = mdiChevronLeft;
           break;
         case "arrowRight":
           icon = mdiChevronRight;
+          break;
+        case "birthday":
+          icon = mdiCakeVariant;
+          break;
+        case "male":
+          icon = mdiGenderMale;
+          break;
+        case "female":
+          icon = mdiGenderFemale;
+          break;
+        case "back":
+          icon = mdiArrowLeftThick;
           break;
         default:
           break;

@@ -8,6 +8,7 @@
 #app {
   height: 100vh;
   width: 100vw;
-  background-color: #E1DBDA;
+  background-color: $grey-background;
+  overflow-y: auto;
 }
 </style>
