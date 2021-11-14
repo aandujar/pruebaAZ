@@ -5,7 +5,7 @@
       <select name="select" id="selectGender" class="filter__select" v-on:change="genderChanged">
         <option value="female" selected>Mujer</option>
         <option value="male">Hombre</option>
-        <option value="both">Ambas</option>
+        <option value="both">Ambos</option>
       </select>
     </div>
     <div>

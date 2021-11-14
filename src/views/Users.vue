@@ -12,16 +12,19 @@
         <transition name="fade">
           <ButtonCarrousel
             icon="arrowLeft"
-            v-show="position < users.length"
-            @clicked="showPrevious"
+            v-show="position > 1"
+            @clicked="showNext"
           />
         </transition>
       </div>
-      <div class="users__carousel__container" v-if="position !== null && !loading">
+      <div
+        class="users__carousel__container"
+        v-if="position !== null && !loading"
+      >
         <div v-for="(user, index) in users" :key="index">
           <div
             class="users__carousel__container__user"
-            v-show="Number(index) + 1 === position"
+            v-show="isCurrentUser(index)"
             :id="`user${Number(index) + 1}`"
             v-on:click="goToUserProfile(user)"
           >
@@ -36,11 +39,22 @@
         <transition name="fade">
           <ButtonCarrousel
             icon="arrowRight"
-            v-show="position > 1"
-            @clicked="showNext"
+            v-show="position < users.length"
+            @clicked="showPrevious"
           />
         </transition>
       </div>
+    </div>
+    <div class="users__position">
+      <div
+        v-for="(user, index) in users"
+        :key="index"
+        class="users__position__item"
+        :class="{
+          'users__position__item--selected': isCurrentUser(index),
+          'users__position__item--not-selected': !isCurrentUser(index),
+        }"
+      ></div>
     </div>
     <div class="users__filter">
       <UsersFilter @gender="setGender" @results="setResults" />
@@ -75,6 +89,9 @@ export default {
     this.searchUsers();
   },
   methods: {
+    isCurrentUser(index) {
+      return this.position !== null && Number(index) + 1 === this.position;
+    },
     setGender(genderSelected) {
       this.gender = genderSelected;
       this.searchUsers();
@@ -89,10 +106,10 @@ export default {
       if (this.gender !== "both") {
         params["gender"] = this.gender;
       }
-      
+
       this.$store
         .dispatch("getUsers", params)
-        .then(() => this.position = this.users.length, 1000)
+        .then(() => (this.position = 1), 1000)
         .catch(() =>
           this.$notify({
             group: "foo",
@@ -330,6 +347,43 @@ export default {
     .fade-enter,
     .fade-leave-to {
       opacity: 0;
+    }
+  }
+
+  &__position {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15px;
+
+    &__item {
+      height: 30px;
+      width: 30px;
+      border-radius: 20px;
+      margin-left: 5px;
+      margin-right: 5px;
+
+      &--selected {
+        background-color: $blue-primary;
+        border: 1px solid $blue-primary;
+      }
+
+      &--not-selected {
+        border: 1px solid white;
+        background-color: $white;
+      }
+    }
+
+    @media (max-width: 500px) {
+      &__item {
+        height: 15px;
+        width: 15px;
+        border-radius: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
     }
   }
 

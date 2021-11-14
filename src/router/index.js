@@ -38,6 +38,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name !== 'Register' && !store.getters.isUserLogged) next({ name: 'Register' })
+  else if (to.name === 'Register' && store.getters.isUserLogged) next({ name: 'Wrapper' })
   else next()
 })
 
